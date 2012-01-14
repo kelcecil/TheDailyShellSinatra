@@ -1,0 +1,19 @@
+%html
+  %head
+    %title The Daily Shell
+    %link{:rel => "stylesheet", :href => "css/main.css", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "blueprint/screen.css", :type => "text/css", :media => "screen,projection"}
+    %link{:rel => "stylesheet", :href => "blueprint/print.css", :type => "text/css", :media => "print"}
+  %body
+    .container
+      #header
+        #title{:class => "span-16"}
+          %h1 The Daily Shell
+          %h3 New command prompt knowledge delivered fresh daily!
+        #social{:class => "span-8 last"}
+          twitter facebewk
+      #daily{:class => "span-24"}
+        %p= command['name']
+      #footer{:class => "span-24"}
+        %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better hackers.
+        %p{:class => "small"} Programs and commands are copyright of their respective owners.
