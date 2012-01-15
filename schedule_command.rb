@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'data_mapper'
+require './util/DataMapperHelpers'
 require './FeaturedInfo'
 require 'mongo'
 
@@ -60,20 +61,6 @@ def prepare_sql
   finalize_db()
 end
 
-def setup_db(context,url)
-    begin
-        DataMapper.setup(context,url)
-    rescue => error
-      puts "setupDB :: #{error}"
-    end
+if __FILE__ == $0
+  main()
 end
-
-def finalize_db()
-    begin
-        DataMapper.finalize
-    rescue
-      puts "finalizeDB :: #{error}"
-    end
-end
-
-main()

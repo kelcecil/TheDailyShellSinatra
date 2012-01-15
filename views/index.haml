@@ -13,7 +13,14 @@
         #social{:class => "span-8 last"}
           twitter facebewk
       #daily{:class => "span-24"}
-        %p= command['name']
+        #command
+          %p= command['name']
+        #description
+          %p= command['description']
+        #author
+          %p= command['author']
+        #where
+          %p= command['where']
       #footer{:class => "span-24"}
         %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better developers and hackers. Please share your newfound knowledge with your friends!
         %p{:class => "small"} Programs and commands are copyright of their respective owners.

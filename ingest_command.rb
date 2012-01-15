@@ -65,4 +65,6 @@ def finalize_db()
     end
 end
 
-main()
+if __FILE__ == $0 then
+  main()
+end
