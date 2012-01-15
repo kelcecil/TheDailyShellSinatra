@@ -15,11 +15,13 @@ class TheDailyShell < Sinatra::Application
 
   helpers do
     def get_todays_command_from_mongo(query)
-      #return mongo.collection('programs').find_one(query)
+      return MongoDB.collection('programs').find_one(query)
     end
 
     def get_todays_command_uuid_from_sql()
-      return FeaturedInfo.all(:order => [ :datelastfeatured.desc ], :limit => 1, :fields => [:uuid])
+      # Need to add some branch logic for ambiguous cases where commands share names.
+      potential_commands = FeaturedInfo.all(:order => [ :datelastfeatured.desc ], :limit => 1, :fields => [:uuid])
+      return potential_commands.first.uuid
     end
     
     def render_a_command_by_name(name)
@@ -36,7 +38,6 @@ class TheDailyShell < Sinatra::Application
 
   get '/' do
     # Grab most recent command id
-    puts mongo
     render_a_command_by_uuid(get_todays_command_uuid_from_sql())
   end
   

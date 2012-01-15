@@ -17,10 +17,11 @@ def finalize_db()
 end
 
 configure do
+	  require 'mongo'
 	  url = "sqlite://#{Dir.pwd}/db/dailyshell.db"
 
 	  # Set up connection pooling for Mongo DB queries
-	  mongo = Mongo::Connection.new("localhost",27017, :pool_size => 10, :pool_timeout => 200).db('thedailyshell')
+	  MongoDB = Mongo::Connection.new("localhost",27017, :pool_size => 10, :pool_timeout => 200).db('thedailyshell')
 
 	  # Set up pooled connection for Relational queries using DataMapper
 	  setup_db(:default,url)
