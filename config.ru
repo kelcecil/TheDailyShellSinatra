@@ -1,4 +1,4 @@
-require './service.rb'
+require './TheDailyShell.rb'
 
 def setup_db(context,url)
     begin
