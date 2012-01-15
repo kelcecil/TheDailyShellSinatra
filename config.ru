@@ -1,18 +1,30 @@
 require './service.rb'
 
+def setup_db(context,url)
+    begin
+	DataMapper.setup(context,url)
+    rescue => error
+    	puts "setupDB :: #{error}"
+    end
+end
+
+def finalize_db()
+    begin
+	DataMapper.finalize
+    rescue
+	puts "finalizeDB :: #{error}"
+    end
+end
+
 configure do
-	  require 'mongo'
-	  #context = :default
-	  #URI = "sqlite://#{Dir.pwd}/db/dailyshell.db"
+	  url = "sqlite://#{Dir.pwd}/db/dailyshell.db"
 
 	  # Set up connection pooling for Mongo DB queries
-	  MongoDB = Mongo::Connection.new("localhost",27017, :pool_size => 10, :pool_timeout => 200).db('thedailyshell')
+	  mongo = Mongo::Connection.new("localhost",27017, :pool_size => 10, :pool_timeout => 200).db('thedailyshell')
 
-	  # Load data structures we need for DataMapper ORM
-	  
 	  # Set up pooled connection for Relational queries using DataMapper
-	  #setup_db(context,URI)
-	  #finalize_db()
+	  setup_db(:default,url)
+	  finalize_db()
 end
 
 run TheDailyShell
