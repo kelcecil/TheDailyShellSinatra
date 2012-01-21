@@ -25,15 +25,30 @@
       .hero-unit
         %h1{:class => "command"}= command['name']
         %h3{:class => "one-liner"}= command['description']
+      .row
+        #synopsis{:class => "span14"}
+          #synopsis-header{:class => "page-header"}
+            %h3 Synopsis
+          %p Hello there!
+        #author{:class => "span2"}
+          #author-header{:class => "page-header"}
+            %h3 Author
+          %p= command['author']
+        #where{:class => "span2"}
+          #where-header{:class => "page-header"}
+            %h3 URL
+          %p= command['where']
       #footer
         .row
-          #bottom{:class => "span14"}
+          #bottom{:class => "span16"}
+            #bottom-header{:class => "page-header"}
+              %h5 Slight Legal Info
             %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better developers and hackers. Please share your newfound knowledge with your friends!
             %p{:class => "small"} Programs and commands are copyright of their respective owners.
-          #social{:class => "span2 page-header"}
+          #social{:class => "span4"}
             #social-header{:class => "page-header"}
-              %h3 Social
-            %a{:href => "http://www.twitter.com"}
+              %h5 Social
+            %a{:href => "http://www.twitter.com/#!/dailyshell/"}
               %img{:class => "icon", :src => "img/twitter.png"}
             %a{:href => "http://www.facebook.com"}
               %img{:class => "icon", :src => "img/facebook.png"}
