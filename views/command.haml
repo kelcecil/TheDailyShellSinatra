@@ -1,0 +1,39 @@
+%html
+  %head
+    %title The Daily Shell
+    %link{:rel => "stylesheet/less", :type => "text/css", :href => "lib/bootstrap.less"}
+    %script{:src => "js/less.js", :type => "text/javascript"}
+    %link{:rel => "stylesheet", :href => "css/main.css"}
+    %script{:src => "js/dailyshell.js", :type => "text/javascript"}
+  %body
+    #topbar{:class => "topbar-wrapper", :style => "z-index: 5;"}
+      .topbar
+        .topbar-inner
+          .container-fluid
+            %h3 
+              %a{:class => "brand",:href => "#"} thedailyshell
+            %ul{:class => "nav"}
+              %li{:class => "active"}
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "/about/"} About
+            %ul{:class => "nav secondary-nav"}
+              %li
+                %h3{:class => "brand date"}
+                  %script document.write(todays_date());
+    .container-fluid
+      .hero-unit
+        %h1{:class => "command"}= command['name']
+        %h3{:class => "one-liner"}= command['description']
+      #footer
+        .row
+          #bottom{:class => "span14"}
+            %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better developers and hackers. Please share your newfound knowledge with your friends!
+            %p{:class => "small"} Programs and commands are copyright of their respective owners.
+          #social{:class => "span2 page-header"}
+            #social-header{:class => "page-header"}
+              %h3 Social
+            %a{:href => "http://www.twitter.com"}
+              %img{:class => "icon", :src => "img/twitter.png"}
+            %a{:href => "http://www.facebook.com"}
+              %img{:class => "icon", :src => "img/facebook.png"}

@@ -25,12 +25,12 @@ class TheDailyShell < Sinatra::Application
     end
     
     def render_a_command_by_name(name)
-      haml :index, :locals => {:command => get_todays_command_from_mongo('name' => name)}
+      haml :command, :locals => {:command => get_todays_command_from_mongo('name' => name)}
     end
 
     def render_a_command_by_uuid(uuid)
       # If the page comes back, render.
-      haml :index, :locals => {:command => get_todays_command_from_mongo('uuid' => uuid)}
+      haml :command, :locals => {:command => get_todays_command_from_mongo('uuid' => uuid)}
       # If no record is found, draw a 404.
     end
     
