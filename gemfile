@@ -1,0 +1,14 @@
+source :rubygems
+
+gem 'haml'
+gem 'mongo'
+gem 'data_mapper'
+gem 'json'
+gem 'bson'
+gem 'sinatra'
+
+# Gems for ingesting commands
+gem 'uuid'
+
+# Gems for sharing via Twitter
+gem 'oauth'
