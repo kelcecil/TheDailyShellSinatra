@@ -3,7 +3,6 @@
 require 'sinatra'
 require 'json'
 require 'mongo'
-require 'logger'
 require 'haml'
 require 'data_mapper'
 
@@ -36,12 +35,17 @@ class TheDailyShell < Sinatra::Application
     
   end
 
+  get '/landing' do
+    haml :landing
+  end
+
   get '/' do
     # Grab most recent command id
-    render_a_command_by_uuid(get_todays_command_uuid_from_sql())
+    #render_a_command_by_uuid(get_todays_command_uuid_from_sql())
+    haml :landing
   end
   
-  get '/#!/:name' do   
+  get '/command/:name' do   
     # Sanitize and check for nonsense.
 
     # Render the page for the visitor.

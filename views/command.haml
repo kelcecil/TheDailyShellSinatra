@@ -1,10 +1,10 @@
 %html
   %head
     %title The Daily Shell
-    %link{:rel => "stylesheet/less", :type => "text/css", :href => "lib/bootstrap.less"}
-    %script{:src => "js/less.js", :type => "text/javascript"}
-    %link{:rel => "stylesheet", :href => "css/main.css"}
-    %script{:src => "js/dailyshell.js", :type => "text/javascript"}
+    %link{:rel => "stylesheet/less", :type => "text/css", :href => "http://localhost:9393/lib/bootstrap.less"}
+    %script{:src => "http://localhost:9393/js/less.js", :type => "text/javascript"}
+    %link{:rel => "stylesheet", :href => "http://localhost:9393/css/main.css"}
+    %script{:src => "http://localhost:9393/js/dailyshell.js", :type => "text/javascript"}
   %body
     #topbar{:class => "topbar-wrapper", :style => "z-index: 5;"}
       .topbar
@@ -21,12 +21,12 @@
               %li
                 %h3{:class => "brand date"}
                   %script document.write(todays_date());
-    .container-fluid
+    .container
       .hero-unit
         %h1{:class => "command"}= command['name']
         %h3{:class => "one-liner"}= command['description']
       .row
-        #synopsis{:class => "span14"}
+        #synopsis{:class => "span10"}
           #synopsis-header{:class => "page-header"}
             %h3 Synopsis
           %p Hello there!
@@ -34,13 +34,16 @@
           #author-header{:class => "page-header"}
             %h3 Author
           %p= command['author']
-        #where{:class => "span2"}
+        #where{:class => "span4"}
           #where-header{:class => "page-header"}
             %h3 URL
-          %p= command['where']
+          - if not command['where'] == '???'
+            %a{:href => command['where']}= command['where']
+          - else
+            %p None
       #footer
         .row
-          #bottom{:class => "span16"}
+          #bottom{:class => "span12"}
             #bottom-header{:class => "page-header"}
               %h5 Slight Legal Info
             %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better developers and hackers. Please share your newfound knowledge with your friends!
