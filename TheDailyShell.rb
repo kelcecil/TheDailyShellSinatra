@@ -44,6 +44,10 @@ class TheDailyShell < Sinatra::Application
     #render_a_command_by_uuid(get_todays_command_uuid_from_sql())
     haml :landing,:locals => {:command => get_todays_command_from_mongo('uuid' => get_todays_command_uuid_from_sql)}
   end
+
+  get '/references' do
+    haml :references
+  end
   
   get '/command/:name' do   
     # Sanitize and check for nonsense.

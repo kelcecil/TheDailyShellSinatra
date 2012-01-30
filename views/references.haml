@@ -1,0 +1,39 @@
+%html
+  %head
+    %title The Daily Shell
+    %link{:rel => "stylesheet/less", :type => "text/css", :href => "http://localhost:9393/lib/bootstrap.less"}
+    %script{:src => "http://localhost:9393/js/less.js", :type => "text/javascript"}
+    %link{:rel => "stylesheet", :href => "http://localhost:9393/css/main.css"}
+    %script{:src => "http://localhost:9393/js/dailyshell.js", :type => "text/javascript"}
+  %body
+    #topbar{:class => "topbar-wrapper", :style => "z-index: 5;"}
+      .topbar
+        .topbar-inner
+          .container-fluid
+            %h3 
+              %a{:class => "brand",:href => "#"} thedailyshell
+            %ul{:class => "nav"}
+              %li{:class => "active"}
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "/about/"} About
+            %ul{:class => "nav secondary-nav"}
+              %li
+                %h3{:class => "brand date"}
+                  %script document.write(todays_date());
+    .container
+      <iframe src="http://astore.amazon.com/thedaishe08-20" width="90%" height="2000px" frameborder="0" scrolling="no"></iframe>
+      #footer
+        .row
+          #bottom{:class => "span12"}
+            #bottom-header{:class => "page-header"}
+              %h5 Slight Legal Info
+            %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better developers and hackers. Please share your newfound knowledge with your friends!
+            %p{:class => "small"} Programs and commands are copyright of their respective owners.
+          #social{:class => "span4"}
+            #social-header{:class => "page-header"}
+              %h5 Social
+            %a{:href => "http://www.twitter.com/#!/dailyshell/"}
+              %img{:class => "icon", :src => "img/twitter.png"}
+            %a{:href => "http://www.facebook.com"}
+              %img{:class => "icon", :src => "img/facebook.png"}
