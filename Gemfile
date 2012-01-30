@@ -6,6 +6,7 @@ gem 'data_mapper'
 gem 'dm-sqlite-adapter'
 gem 'json'
 gem 'bson'
+gem 'bson_ext'
 gem 'sinatra'
 
 # Gems for ingesting commands
