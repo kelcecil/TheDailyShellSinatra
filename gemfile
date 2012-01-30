@@ -5,6 +5,7 @@ gem 'mongo'
 gem 'data_mapper'
 gem 'json'
 gem 'bson'
+gem 'bson_ext'
 gem 'sinatra'
 
 # Gems for ingesting commands
