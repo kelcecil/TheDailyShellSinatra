@@ -8,8 +8,6 @@ require './FeaturedInfo'
 
 def main()
 
-  uuid = UUID.new
-
   # Read and validate the text file containing the JSON object
   begin
     file = File.open(ARGV[0], 'rb')
@@ -26,16 +24,12 @@ def main()
     return
   end
     
-  # Generate a UUID to link the two databases.
-  uuid = uuid.generate
-
   # Parse the JSON into an associative array and add the uuid
   program = JSON.parse(file_contents)
-  program['uuid'] = uuid
 
   # Write new data to both databases
-  mongodb_connection.collection("programs").insert(program)
-  FeaturedInfo.create(:uuid => uuid, :datelastfeatured => Date.today - 32)
+  mongodb_connection.collection("programs").update({'uuid' => program['uuid']},program,{:upsert => true})
+  FeaturedInfo.first_or_create({:uuid => program['uuid']}, {:datelastfeatured => Date.today - 32})
 
 end
 
