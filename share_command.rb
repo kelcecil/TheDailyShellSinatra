@@ -42,7 +42,7 @@ def main()
   command = mongo_connection.collection('programs').find_one('uuid' => potential_commands.first.uuid)
 
   # 5. Post the entry to Twitter @dailyshell
-  access_token.post(URI.escape("#{STATUS_UPDATE}?status=#{command['name']} - http://www.dailyshell.com/command/#{command['name']}"))
+  access_token.post(URI.escape("#{STATUS_UPDATE}?status=#{command['name']} - http://www.thedailyshell.com/command/#{command['name']}"))
 
 end
 
