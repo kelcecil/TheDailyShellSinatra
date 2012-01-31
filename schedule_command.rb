@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'data_mapper'
-require './util/DataMapperHelpers'
-require './FeaturedInfo'
+require "#{Dir.pwd}/util/DataMapperHelpers"
+require "#{Dir.pwd}/FeaturedInfo"
 require 'mongo'
 
 threshold = 30

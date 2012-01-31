@@ -2,8 +2,8 @@
 
 require 'oauth'
 require 'data_mapper'
-require './FeaturedInfo'
-require './util/DataMapperHelpers'
+require "#{Dir.pwd}/FeaturedInfo"
+require "#{Dir.pwd}/util/DataMapperHelpers"
 require 'mongo'
 require 'uri'
 
