@@ -2,8 +2,8 @@
 
 require 'oauth'
 require 'data_mapper'
-require "#{Dir.pwd}/FeaturedInfo"
-require "#{Dir.pwd}/util/DataMapperHelpers"
+require "#{File.expand_path(File.dirname(__FILE__))}/FeaturedInfo"
+require "#{File.expand_path(File.dirname(__FILE__))}/util/DataMapperHelpers"
 require 'mongo'
 require 'uri'
 
@@ -42,7 +42,7 @@ def main()
   command = mongo_connection.collection('programs').find_one('uuid' => potential_commands.first.uuid)
 
   # 5. Post the entry to Twitter @dailyshell
-  access_token.post(URI.escape("#{STATUS_UPDATE}?status=#{command['name']} - http://www.dailyshell.com/command/#{command['name']}"))
+  access_token.post(URI.escape("#{STATUS_UPDATE}?status=#{command['name']} - http://www.thedailyshell.com/command/#{command['name']}"))
 
 end
 
@@ -51,7 +51,7 @@ def open_mongo_connection()
 end
 
 def prepare_sql
-  setup_db(:default,"sqlite://#{Dir.pwd}/db/dailyshell.db")
+  setup_db(:default,"sqlite://#{File.expand_path(File.dirname(__FILE__))}/db/dailyshell.db")
   finalize_db()
 end
 

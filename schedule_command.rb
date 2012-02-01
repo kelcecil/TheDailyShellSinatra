@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'data_mapper'
-require "#{Dir.pwd}/util/DataMapperHelpers"
-require "#{Dir.pwd}/FeaturedInfo"
+require "#{File.expand_path(File.dirname(__FILE__))}/util/DataMapperHelpers"
+require "#{File.expand_path(File.dirname(__FILE__))}/FeaturedInfo"
 require 'mongo'
 
 threshold = 30
@@ -57,7 +57,7 @@ def open_mongo_connection()
 end
 
 def prepare_sql
-  setup_db(:default,"sqlite://#{Dir.pwd}/db/dailyshell.db")
+  setup_db(:default,"sqlite://#{File.expand_path(File.dirname(__FILE__))}/db/dailyshell.db")
   finalize_db()
 end
 
