@@ -1,6 +1,7 @@
 %html
   %head
-    %title The Daily Shell
+    %title #{command['name']} - The Daily Shell
+    %meta{:name => "description", :content => "Learn more about the Linux shell command #{command['name']}. Learn a new command every day with The Daily Shell!"}
     %link{:rel => "stylesheet/less", :type => "text/css", :href => "http://www.thedailyshell.com/lib/bootstrap.less"}
     %script{:src => "http://www.thedailyshell.com/js/less.js", :type => "text/javascript"}
     %link{:rel => "stylesheet", :href => "http://www.thedailyshell.com/css/main.css"}
@@ -25,22 +26,36 @@
       .hero-unit
         %h1{:class => "command"}= command['name']
         %h3{:class => "one-liner"}= command['description']
-      .row
-        #synopsis{:class => "span10"}
-          #synopsis-header{:class => "page-header"}
-            %h3 Synopsis
-          %p Hello there!
-        #author{:class => "span2"}
-          #author-header{:class => "page-header"}
-            %h3 Author
-          %p= command['author']
-        #where{:class => "span4"}
-          #where-header{:class => "page-header"}
-            %h3 URL
-          - if not command['where'] == '???'
+      - if command['whatsitusefulfor']
+        .row
+          #synopsis{:class => "span16"}
+            #synopsis-header{:class => "page-header"}
+              %h3 Synopsis
+            %p= command['whatsitusefulfor']
+      - if command['author'] 
+        .row
+          #author{:class => "span16"}
+            #author-header{:class => "page-header"}
+              %h3 Author
+            %p= command['author']
+      - if command['partof']
+        .row
+          #partof{:class => "span16"}
+            #author-header{:class => "page-header"}
+              %h3 Part of
+            %p= command['partof']
+      - if command['partofurl']
+        .row
+          #partofurl{:class => "span16"}
+            #partofurl-header{:class => "page-header"}
+              %h3 Project URL
+            %p= command['partofurl']
+      - if command['where']
+        .row
+          #where{:class => "span16"}
+            #where-header{:class => "page-header"}
+              %h3 Command URL
             %a{:href => command['where']}= command['where']
-          - else
-            %p None
       #footer
         .row
           #bottom{:class => "span12"}

@@ -35,14 +35,9 @@ class TheDailyShell < Sinatra::Application
     
   end
 
-  get '/landing' do
-    haml :landing
-  end
-
   get '/' do
     # Grab most recent command id
-    #render_a_command_by_uuid(get_todays_command_uuid_from_sql())
-    haml :landing,:locals => {:command => get_todays_command_from_mongo('uuid' => get_todays_command_uuid_from_sql)}
+    render_a_command_by_uuid(get_todays_command_uuid_from_sql())
   end
 
   get '/references' do
@@ -53,8 +48,7 @@ class TheDailyShell < Sinatra::Application
     # Sanitize and check for nonsense.
 
     # Render the page for the visitor.
-    #render_a_command_by_name(params[:name])
-    haml :landing, :locals => {:command => get_todays_command_from_mongo('uuid' => get_todays_command_uuid_from_sql)}
+    render_a_command_by_name(params[:name])
   end
 
   get '/about' do
