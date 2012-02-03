@@ -1,71 +1,72 @@
+!!! 5
 %html
   %head
     %title #{command['name']} - The Daily Shell
     %meta{:name => "description", :content => "Learn more about the Linux shell command #{command['name']}. Learn a new command every day with The Daily Shell!"}
-    %link{:rel => "stylesheet/less", :type => "text/css", :href => "http://www.thedailyshell.com/lib/bootstrap.less"}
-    %script{:src => "http://www.thedailyshell.com/js/less.js", :type => "text/javascript"}
+    %link{:rel => "stylesheet", :type => "text/css", :href => "http://localhost:9393/lib/css/bootstrap.css"}
+    %script{:src => "http://localhost:9393/js/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "http://localhost:9393/lib/js/bootstrap.js", :type => "text/javascript"}
     %link{:rel => "stylesheet", :href => "http://www.thedailyshell.com/css/main.css"}
     %script{:src => "http://www.thedailyshell.com/js/dailyshell.js", :type => "text/javascript"}
   %body
-    #topbar{:class => "topbar-wrapper", :style => "z-index: 5;"}
-      .topbar
-        .topbar-inner
-          .container-fluid
-            %h3 
-              %a{:class => "brand",:href => "#"} thedailyshell
-            %ul{:class => "nav"}
-              %li{:class => "active"}
-                %a{:href => "#"} Home
-              %li
-                %a{:href => "https://github.com/kelcecil/TheDailyShellData", :target => "_blank"} Contribute
-              -#%li
-              -#  %a{:href => "/about/"} About
-            %ul{:class => "nav secondary-nav"}
-              %li
-                %h3{:class => "brand date"}
-                  %script document.write(todays_date());
+    #topbar{:class => "navbar navbar-fixed-top"}
+      .navbar-inner
+        .container-fluid
+          %h3 
+            %a{:class => "brand",:href => "#"} thedailyshell
+          %ul{:class => "nav"}
+            %li{:class => "active"}
+              %a{:href => "#"} Home
+            %li
+              %a{:href => "https://github.com/kelcecil/TheDailyShellData", :target => "_blank"} Contribute
+            -#%li
+            -#  %a{:href => "/about/"} About
+          -#%ul{:class => "nav secondary-nav"}
+            -#%li
+              -#%h3{:class => "date"}
+                -#%script document.write(todays_date());
     .container
       .hero-unit
         %h1{:class => "command"}= command['name']
         %h3{:class => "one-liner"}= command['description']
       - if command['whatsitusefulfor']
         .row
-          #synopsis{:class => "span16"}
+          #synopsis{:class => "span12"}
             #synopsis-header{:class => "page-header"}
               %h3 Synopsis
             %p= command['whatsitusefulfor']
       - if command['author'] 
         .row
-          #author{:class => "span16"}
+          #author{:class => "span12"}
             #author-header{:class => "page-header"}
               %h3 Author
             %p= command['author']
       - if command['partof']
         .row
-          #partof{:class => "span16"}
+          #partof{:class => "span12"}
             #author-header{:class => "page-header"}
               %h3 Part of
             %p= command['partof']
       - if command['partofurl']
         .row
-          #partofurl{:class => "span16"}
+          #partofurl{:class => "span12"}
             #partofurl-header{:class => "page-header"}
               %h3 Project URL
             %p= command['partofurl']
       - if command['where']
         .row
-          #where{:class => "span16"}
+          #where{:class => "span12"}
             #where-header{:class => "page-header"}
               %h3 Command URL
             %a{:href => command['where']}= command['where']
       #footer
         .row
-          #bottom{:class => "span12"}
+          #bottom{:class => "span10"}
             #bottom-header{:class => "page-header"}
               %h5 Slight Legal Info
             %p{:class => "small"} The Daily Shell is a creation of Cecil Research and Development of Morgantown, WV, USA to help us all become better developers and hackers. Please share your newfound knowledge with your friends!
             %p{:class => "small"} Programs and commands are copyright of their respective owners.
-          #social{:class => "span4"}
+          #social{:class => "span2"}
             #social-header{:class => "page-header"}
               %h5 Social
             %a{:href => "http://www.twitter.com/#!/dailyshell/"}
