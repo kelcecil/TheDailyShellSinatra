@@ -6,6 +6,7 @@ require "#{File.expand_path(File.dirname(__FILE__))}/FeaturedInfo"
 require "#{File.expand_path(File.dirname(__FILE__))}/util/DataMapperHelpers"
 require 'mongo'
 require 'uri'
+require 'syslog'
 
 CONSUMER_KEY = 'Jy0Q4mahdT93mkqrKiFnkw'
 CONSUMER_SECRET = 'Nq87obJStpp6HlJGmcY9ZzbuZsDvkBgcfhPP1UkhQ'
@@ -31,7 +32,8 @@ def main()
   begin
     mongo_connection = open_mongo_connection()
     prepare_sql()
-  rescue => error
+  rescue Exception => error
+    Syslog.open($0, Syslog::LOG_PID | Syslog::LOG_CONS) { |s| s.err error.message }
     return
   end
 

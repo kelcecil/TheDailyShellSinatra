@@ -4,6 +4,7 @@ require 'data_mapper'
 require "#{File.expand_path(File.dirname(__FILE__))}/util/DataMapperHelpers"
 require "#{File.expand_path(File.dirname(__FILE__))}/FeaturedInfo"
 require 'mongo'
+require 'syslog'
 
 threshold = 30
 
@@ -15,8 +16,13 @@ threshold = 30
 
 def main()
   # 1. Open connections to the database
-  mongodb_connection = open_mongo_connection()
-  prepare_sql()
+  begin
+    mongodb_connection = open_mongo_connection()
+    prepare_sql()
+  rescue Exception => error
+    Syslog.open($0, Syslog::LOG_PID | Syslog::LOG_CONS) { |s| s.err error.message }
+    return
+  end
 
   random_number = Random.new
   satisfied = false
