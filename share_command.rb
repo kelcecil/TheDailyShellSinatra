@@ -8,11 +8,11 @@ require 'mongo'
 require 'uri'
 require 'syslog'
 
-CONSUMER_KEY = 'Jy0Q4mahdT93mkqrKiFnkw'
-CONSUMER_SECRET = 'Nq87obJStpp6HlJGmcY9ZzbuZsDvkBgcfhPP1UkhQ'
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
 
-ACCESS_TOKEN = '466948495-9lNGy1GRYWL9LzblMud86Pwp6rl4BulIDCQPBYOP'
-ACCESS_TOKEN_SECRET = '04Fw2QtjkQ9ULHwPj6Dzz80yIMdaUFRJvPmpl9DHK0'
+ACCESS_TOKEN = ''
+ACCESS_TOKEN_SECRET = ''
 
 BASE_TWITTER_API = 'http://api.twitter.com'
 
